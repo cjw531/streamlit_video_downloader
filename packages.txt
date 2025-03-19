@@ -1,2 +1,3 @@
 ffmpeg
 imageio-ffmpeg
+yt-dlp
