@@ -6,15 +6,23 @@ import os
 def download_youtube_clip(url, start_time, end_time, output_filename="clip.mp4"):
     """
     Downloads a YouTube video clip using yt-dlp with enhanced quality settings.
+    
+    Args:
+        url (str): YouTube video URL.
+        start_time (str): Start time in HH:MM:SS or seconds.
+        end_time (str): End time in HH:MM:SS or seconds.
+        output_filename (str): Name of the output file (ensure .mp4 extension).
     """
     command = [
         "yt-dlp",
-        "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]",
+        # "--list-formats",
+        # "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]",
+        "-f", "bestvideo+bestaudio/best",
         "--merge-output-format", "mp4",
         "-o", output_filename,
         "--download-sections", f"*{start_time}-{end_time}",
         "--format-sort", "resolution,codec:avc",
-        "--prefer-free-formats",
+        # "--prefer-free-formats",
         url
     ]
     
